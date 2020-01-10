@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Align(
             alignment: Alignment.center,
             child: Icon(
-              Icons.favorite,
+              Icons.person_outline,
               color: Colors.green,
               size: 70.0,
             ),
