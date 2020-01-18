@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(title: "Contador de pessoas", home: Home()));
+  runApp(MaterialApp(title: "Contador de Pessoas", home: Home()));
 }
 
 class Home extends StatefulWidget {
@@ -11,34 +10,40 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   int _people = 0;
+  String _infoText = "Pode Entrar!";
 
   void _changePeople(int delta) {
     setState(() {
       _people += delta;
-    });
-  }
 
-  String _textRestaurant() {
-    if (_people > 5) return "Lotado";
-    if (_people >= 0) return "Pode entrar";
-    return "Mundo invertido??";
+      if (_people < 0) {
+        _infoText = "Mundo invertido?!";
+      } else if (_people <= 10) {
+        _infoText = "Pode Entrar!";
+      } else {
+        _infoText = "Lotado!";
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Image.asset("images/restaurant.jpg", fit: BoxFit.cover, height: 1500.0),
+        Image.asset(
+          "images/restaurant.jpg",
+          fit: BoxFit.cover,
+          height: 1000.0,
+        ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Pessoas: $_people",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                )),
+            Text(
+              "Pessoas: $_people",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -47,14 +52,11 @@ class _HomeState extends State<Home> {
                   child: FlatButton(
                     child: Text(
                       "+1",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40.0,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 40.0, color: Colors.white),
                     ),
                     onPressed: () {
                       _changePeople(1);
-                      },
+                    },
                   ),
                 ),
                 Padding(
@@ -62,20 +64,17 @@ class _HomeState extends State<Home> {
                   child: FlatButton(
                     child: Text(
                       "-1",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40.0,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 40.0, color: Colors.white),
                     ),
                     onPressed: () {
                       _changePeople(-1);
-                      },
+                    },
                   ),
                 ),
               ],
             ),
             Text(
-              _textRestaurant(),
+              _infoText,
               style: TextStyle(
                   color: Colors.white,
                   fontStyle: FontStyle.italic,
