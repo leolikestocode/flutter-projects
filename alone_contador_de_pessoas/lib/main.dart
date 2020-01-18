@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -51,7 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Image.asset('images/background.jpg'),
+        Image.asset(
+          "images/background.jpg",
+          fit: BoxFit.cover,
+          height: 1000.0,
+        ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,9 +65,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text('Pessoas: ',
-                      style: TextStyle(color: Colors.white, fontSize: 30.0)),
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 30.0,
+                          decoration: TextDecoration.none)),
                   Text(_person.toString(),
-                      style: TextStyle(color: Colors.white, fontSize: 30.0))
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 30.0,
+                          decoration: TextDecoration.none))
                 ]),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,8 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         addPerson(1);
                       },
                       child: Text("+1",
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 30.0))),
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 30.0,
+                              decoration: TextDecoration.none))),
                 ),
                 Padding(
                   padding: EdgeInsets.all(10),
@@ -87,12 +99,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       child: Text("-1",
                           style:
-                              TextStyle(color: Colors.white, fontSize: 30.0))),
+                              TextStyle(color: Colors.blue, fontSize: 30.0))),
                 ),
               ],
             ),
             Text(_message,
-                style: TextStyle(color: Colors.white, fontSize: 30.0))
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 30.0,
+                    decoration: TextDecoration.none))
           ],
         )
       ],
