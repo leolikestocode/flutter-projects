@@ -1,0 +1,169 @@
+import 'dart:io';
+import 'package:contact_book/helpers/contact_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+class ContactPage extends StatefulWidget {
+
+  final Contact contact;
+  ContactPage({this.contact}); // colocar entre chaves para ser opcional
+
+  @override
+  _ContactPageState createState() => _ContactPageState();
+}
+
+class _ContactPageState extends State<ContactPage> {
+
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+
+  final _nameFocus = FocusNode();
+
+  Contact _editedContact;
+  bool _userEdited = false;
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    if(widget.contact == null){
+      _editedContact = Contact();
+    }else{
+      _editedContact = Contact.fromMap(widget.contact.toMap());
+
+      _nameController.text = _editedContact.name;
+      _emailController.text = _editedContact.email;
+      _phoneController.text = _editedContact.phone;
+
+    }
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: _resquestPop,
+      child: Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff220B5E),
+        title: Text(_editedContact.name ?? "Novo Contato"),
+        centerTitle: true,
+      ),
+      backgroundColor: const Color(0xff967ECB),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          if(_editedContact.name != null && _editedContact.name.isNotEmpty){
+            Navigator.pop(context, _editedContact);
+          }else{
+            FocusScope.of(context).requestFocus(_nameFocus);
+          }
+        },
+        child: Icon(Icons.save),
+        backgroundColor: const Color(0xff220B5E),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(15.0),
+        child: Column(
+          children: <Widget>[
+            GestureDetector(
+              child: Container(
+                width: 150.0,
+                height: 150.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: _editedContact.img != null ?
+                      FileImage(File(_editedContact.img)) :
+                      AssetImage("images/user.png"),
+                      fit: BoxFit.cover
+                  )
+                  )
+                ),
+                onTap: (){
+                  ImagePicker.pickImage(source: ImageSource.gallery).then((file){
+                    if(file == null) return;
+                    setState(() {
+                      _editedContact.img = file.path;
+                    });
+                  });
+                },
+              ),
+
+            TextField(
+              controller: _nameController,
+              focusNode: _nameFocus,
+              decoration: InputDecoration(
+                labelText: "Nome"
+              ),
+              onChanged: (text){
+                _userEdited = true;
+                setState(() {
+                  _editedContact.name = text;
+                });
+              },
+            ),
+
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: "Email"
+              ),
+              onChanged: (text){
+                _userEdited = true;
+                _editedContact.email = text;
+              },
+              keyboardType: TextInputType.emailAddress,
+            ),
+
+            TextField(
+              controller: _phoneController,
+              decoration: InputDecoration(
+                labelText: "Celular"
+              ),
+              onChanged: (text){
+                _userEdited = true;
+                _editedContact.phone = text;
+              },
+              keyboardType: TextInputType.phone,
+            ),
+
+          ],
+        ),
+      ),
+    )
+    );
+  }
+  Future<bool> _resquestPop(){
+    if(_userEdited){
+      showDialog(context: context,
+      builder: (context){
+        return AlertDialog(
+          title: Text("Você não salvou :("),
+          content: Text("Se sair, os dados serão perdidos!"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Cancelar"),
+              onPressed: (){
+                Navigator.pop(context);
+              },
+            ),
+            FlatButton(
+              child: Text("Sair"),
+              onPressed: (){
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      }
+      );
+      return Future.value(false);
+    }else{
+      return Future.value(true);
+    }
+  }
+
+}
