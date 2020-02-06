@@ -1,0 +1,4 @@
+#Sat Jan 18 11:46:54 BRST 2020
+base.0=/home/leopromissor/Documentos/flutterProjects/calculadora_de_imc/build/app/intermediates/transforms/r8/release/0/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

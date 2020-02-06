@@ -1,0 +1,73 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run --machine --target lib/main.dart -d emulator-5554 --track-widget-creation --start-paused
+
+## exception
+
+FileSystemException: FileSystemException: Cannot open file, path = '/home/leopromissor/Documentos/flutterProjects/alone_contador_de_pessoas/buscador_de_gif/.packages' (OS Error: No such file or directory, errno = 2)
+
+```
+#0      _File.throwIfError (dart:io/file_impl.dart:645:7)
+#1      _File.openSync (dart:io/file_impl.dart:489:5)
+#2      _File.readAsBytesSync (dart:io/file_impl.dart:549:18)
+#3      ForwardingFile.readAsBytesSync (package:file/src/forwarding/forwarding_file.dart:95:62)
+#4      ForwardingFile.readAsBytesSync (package:file/src/forwarding/forwarding_file.dart:95:62)
+#5      _parse (package:flutter_tools/src/dart/package_map.dart:12:58)
+#6      PackageMap.load (package:flutter_tools/src/dart/package_map.dart:36:14)
+#7      PackageMap.map (package:flutter_tools/src/dart/package_map.dart:40:5)
+#8      new PackageUriMapper (package:flutter_tools/src/compile.dart:199:92)
+#9      DefaultResidentCompiler._recompile (package:flutter_tools/src/compile.dart:587:26)
+#10     _RecompileRequest._run (package:flutter_tools/src/compile.dart:412:16)
+#11     _CompilationRequest.run (package:flutter_tools/src/compile.dart:392:30)
+#12     DefaultResidentCompiler._handleCompilationRequest (package:flutter_tools/src/compile.dart:632:23)
+#13     _rootRunUnary (dart:async/zone.dart:1138:13)
+#14     _CustomZone.runUnary (dart:async/zone.dart:1031:19)
+#15     _CustomZone.runUnaryGuarded (dart:async/zone.dart:933:7)
+#16     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:339:11)
+#17     _DelayedData.perform (dart:async/stream_impl.dart:594:14)
+#18     _StreamImplEvents.handleNext (dart:async/stream_impl.dart:710:11)
+#19     _PendingEvents.schedule.<anonymous closure> (dart:async/stream_impl.dart:670:7)
+#20     _rootRun (dart:async/zone.dart:1122:38)
+#21     _CustomZone.run (dart:async/zone.dart:1023:19)
+#22     _CustomZone.runGuarded (dart:async/zone.dart:925:7)
+#23     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:965:23)
+#24     _rootRun (dart:async/zone.dart:1126:13)
+#25     _CustomZone.run (dart:async/zone.dart:1023:19)
+#26     _CustomZone.runGuarded (dart:async/zone.dart:925:7)
+#27     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:965:23)
+#28     _microtaskLoop (dart:async/schedule_microtask.dart:43:21)
+#29     _startMicrotaskLoop (dart:async/schedule_microtask.dart:52:5)
+#30     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:118:13)
+#31     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:175:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel master, v1.13.9-pre.59, on Linux, locale pt_BR.UTF-8)
+    • Flutter version 1.13.9-pre.59 at /home/leopromissor/Documentos/development/flutter
+    • Framework revision ab36346af6 (7 days ago), 2020-01-11 14:20:05 -0500
+    • Engine revision 3d37d39d95
+    • Dart version 2.8.0 (build 2.8.0-dev.0.0 395daaa3ec)
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 29.0.2)
+    • Android SDK at /home/leopromissor/Android/Sdk
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-29, build-tools 29.0.2
+    • Java binary at: /home/leopromissor/Documentos/android-studio-ide-191.6010548-linux/android-studio/jre/bin/java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_202-release-1483-b49-5587405)
+    • All Android licenses accepted.
+
+[✓] Android Studio (version 3.5)
+    • Android Studio at /home/leopromissor/Documentos/android-studio-ide-191.6010548-linux/android-studio
+    • Flutter plugin version 42.1.1
+    • Dart plugin version 191.8593
+    • Java version OpenJDK Runtime Environment (build 1.8.0_202-release-1483-b49-5587405)
+
+[✓] Connected device (1 available)
+    • Android SDK built for x86 • emulator-5554 • android-x86 • Android 8.0.0 (API 26) (emulator)
+
+• No issues found!
+```

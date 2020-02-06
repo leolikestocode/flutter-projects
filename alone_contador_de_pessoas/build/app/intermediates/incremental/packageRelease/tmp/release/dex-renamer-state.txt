@@ -1,0 +1,4 @@
+#Sat Jan 18 12:32:03 BRST 2020
+base.0=/home/leopromissor/Documentos/flutterProjects/alone_contador_de_pessoas/build/app/intermediates/transforms/r8/release/0/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

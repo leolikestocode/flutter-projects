@@ -1,0 +1,4 @@
+#Mon Jan 06 23:00:10 BRST 2020
+base.0=/home/leopromissor/Documentos/flutterProjects/calculadora_de_imc/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

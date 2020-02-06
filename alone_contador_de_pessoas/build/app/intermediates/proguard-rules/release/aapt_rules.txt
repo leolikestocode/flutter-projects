@@ -1,0 +1,6 @@
+# Referenced at /home/leopromissor/Documentos/flutterProjects/alone_contador_de_pessoas/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:17
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at /home/leopromissor/Documentos/flutterProjects/alone_contador_de_pessoas/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:22
+-keep class com.example.alone_contador_de_pessoas.MainActivity { <init>(); }
+# Referenced at /home/leopromissor/Documentos/flutterProjects/alone_contador_de_pessoas/build/app/intermediates/merged_manifests/release/AndroidManifest.xml:17
+-keep class io.flutter.app.FlutterApplication { <init>(); }
