@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
       body: Container(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(30.0),
         child: Column(
           children: <Widget>[
             Row(
