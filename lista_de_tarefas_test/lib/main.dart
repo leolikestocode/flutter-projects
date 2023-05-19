@@ -57,8 +57,8 @@ class _HomeState extends State<Home> {
                   decoration: InputDecoration(hintText: "Digite a tarefa"),
                   controller: inputController,
                 )),
-                FlatButton(
-                  color: Colors.blueAccent,
+                ElevatedButton(
+                  // color: Colors.blueAccent,
                   child: Text("ADD"),
                   onPressed: _addToList,
                 )
@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
         secondary: CircleAvatar(
           child: Icon(_todoList[index]["checked"] ? Icons.check : Icons.error),
         ),
-        onChanged: (bool newValue) {
+        onChanged: (bool? newValue) {
           setState(() {
             _todoList[index]["checked"] = newValue;
           });
@@ -117,7 +117,7 @@ class _HomeState extends State<Home> {
             duration: Duration(seconds: 3),
           );
 
-          Scaffold.of(context).removeCurrentSnackBar();
+          Scaffold.of(context).hideCurrentSnackBar(snack);
           Scaffold.of(context).showSnackBar(snack);
         });
       },
